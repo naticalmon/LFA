@@ -1,0 +1,125 @@
+digraph moore {
+       rankdir=LR;
+       size="26"
+       node [shape = circle];
+ 
+     
+
+
+      subgraph cluster1 {
+         node [shape = doublecircle]; 
+         q13               /* mude esta linha: nome do estado */
+         label = "<FC>"; 
+         color=white 
+      }
+
+
+      subgraph cluster2 {  
+         node [shape = doublecircle]; 
+         q10               /* mude esta linha: nome do estado */
+         label = "<PT_VIRG>"; 
+         color=white 
+      }
+      subgraph cluster3 {  
+         node [shape = doublecircle]; 
+         q17               /* mude esta linha: nome do estado */
+         label = "<CARACTER>"; 
+         color=white 
+      }
+      subgraph cluster4 {  
+         node [shape = doublecircle]; 
+         q28               /* mude esta linha: nome do estado */
+         label = "wknd";
+         color = white
+         }
+ 
+ 
+         subgraph cluster5 { 
+         node [shape = doublecircle]; 
+         q21               /* mude esta linha: nome do estado */
+         label = "<FP>"; /* mude esta linha: descriÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o do token*/
+         color=white 
+      }
+      subgraph cluster6 {  
+         node [shape = doublecircle]; 
+         q24               /* mude esta linha: nome do estado */
+         label = "<VAR>"; /* mude esta linha: descriÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o do token*/
+         color=white 
+      }
+      subgraph cluster7 { /* numere sequencialmente... */
+         node [shape = doublecircle]; 
+         q25               /* mude esta linha: nome do estado */
+         label = "<NUM>"; /* mude esta linha: descriÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o do token*/
+         color=white 
+      }
+
+
+
+ 
+      
+      q0 -> q1 [ label = "comando" ];
+      q0 -> q13 [ label = "}" ];
+      q1 -> q0 [ label = "programa" ];
+      q1 -> q2 [ label = "while" ];
+      q1 -> q3 [ label = "if" ];
+      q1 -> q4 [ label = "switch_case" ];
+      q1 -> q5 [ label = "do_while" ];
+      q1 -> q6 [ label = "for" ];
+      q1 -> q7 [ label = "atribuicao" ];
+      q2 -> q15 [ label = "(" ];
+      q3 -> q15 [ label = "("];
+      q4 -> q15 [ label = "(" ];
+      q5 -> q9 [ label = "do" ];
+      q6 -> q15 [ label = "(" ];
+      q7 -> q10 [ label = ";" ];
+      q9 -> q28 [ label = "{" ];
+      q10 -> q22 [ label = "exp" ];
+      q11 -> q30 [ label = "bloco" ];
+      q12 -> q10 [ label = ";" ];
+      q12 -> q21 -> q5 [ label = ")" ];
+      q14 -> q11 [ label = ":" ];
+      q15 -> q22 [ label = "exp" ];
+      q15 -> q24 [ label = "a...z" ];
+      q16 -> q14 [ label = "identCase" ];
+      q16 -> q28 [ label = "listaCase" ];
+      q16 -> q25 [ label = "num" ];
+      q16 -> q24 [ label = "a...z" ];
+      q16 -> q17 [ label = "caracter" ];
+      q18 -> q22 [ label = "exp" ];
+      q19 -> q22 [ label = "exp" ];
+      q21 -> q30 [ label = "bloco" ];
+      q21 -> q28 [ label = "{" ];
+      q22 -> q15 [ label = "(" ];
+      q22 -> q24 [ label = "a...z" ];
+      q22 -> q25 [ label = "num" ];
+      q22 -> q26 [ label = "+,-" ];
+      q22 -> q18 [ label = "+,-,*,/,!,&&,||,!,<,>,<=,>=,==,!=" ];
+      q24 -> q21 [ label = ")" ];
+      q24 -> q19 [ label = "=" ];
+      q25 -> q21 [ label = ")" ];
+      q26 -> q25 [ label = "num" ];
+      q27 -> q13 [ label = "}" ];
+      q28 -> q27 [ label = "listaCase" ];
+      q28 -> q16 [ label = "case" ];
+      q28 -> q30 [ label = "bloco" ];
+      q28 -> q0 [ label = "programa" ];
+      q29 -> q30 [ label = "bloco" ];
+      q30 -> q28 [ label = "{" ];
+      q30 -> q1 [ label = "comando" ];
+
+    
+
+
+
+
+
+
+
+ 
+ 
+      /* determine aqui o estado inicial */
+      node [shape = none, label=""];
+	 s -> q0 ;
+ 
+}
+
